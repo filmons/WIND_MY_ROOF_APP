@@ -1,0 +1,22 @@
+{
+  "name": "wind_my_roof_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filmons/WIND_MY_ROOF_APP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filmons/WIND_MY_ROOF_APP/issues"
+  },
+  "homepage": "https://github.com/filmons/WIND_MY_ROOF_APP#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
