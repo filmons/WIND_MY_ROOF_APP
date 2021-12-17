@@ -38,3 +38,17 @@ exports.chikingUser = (userdata, Callback) => {
 		}
 	);
 };
+
+exports.chikingUserData = (userdata, Callback) => {
+	db.query(
+		`SELECT * FROM users where email ="${userdata.email}"  ;`,
+		(error, result) => {
+			if (error) {
+				console.log("error:", error);
+				Callback(error, null);
+			}
+			//console.log(result)
+			Callback(null, result);
+		}
+	);
+};
