@@ -12,11 +12,28 @@ exports.getAllUsers = (callback) => {
 	});
 };
 
+exports.getOneUser = (id, callback) => {
+	//console.log(getOneUser) // db.execute
+	db.execute(`SELECT * FROM users WHERE id = ${id};`, (error, result) => {
+		if (error) {
+			console.log("error:", error);
+			callback(error, null);
+			return;
+		}
+		callback(null, result);
+	});
+};
+
+
 exports.AddUser = (newUser, callback) => {
-	//console.log(newUser)
-	db.execute(`INSERT INTO users( first_name,last_name, email, role, password) VALUES ("${newUser.first_name}","${newUser.last_name}","${newUser.email}", "${newUser.role}", "${newUser.password}");`,
+	console.log(newUser)
+	db.query(
+		`INSERT INTO users( first_name,last_name, email, role, password) VALUES 
+		("${newUser.first_name}","${newUser.last_name}",
+		"${newUser.email}", "${newUser.role}",
+		 "${newUser.password}");`,
 		(error, result) => {
-			if (error){
+			if (error) {
 				console.log("error: ", error);
 				callback(error, null);
 				return;
@@ -27,7 +44,8 @@ exports.AddUser = (newUser, callback) => {
 };
 
 exports.chikingUser = (userdata, Callback) => {
-	db.execute(`SELECT * FROM users where email ="${userdata}";`,
+	db.execute(
+		`SELECT * FROM users where email ="${userdata}";`,
 		(error, result) => {
 			if (error) {
 				console.log("error:", error);

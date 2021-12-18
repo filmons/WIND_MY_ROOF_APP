@@ -23,13 +23,29 @@ exports.findAllUsers = (request, response) => {
 		//console.log(users); // pour voir tout les users
 	});
 };
+exports.OneUsers = (request, response) => {
+	const {id} = request.params;
+	userModel.getOneUser( id,  ( error,result) => {
+		if (error) {
+			response.status(500).json({
+				message:
+					"Le serveur ne fonctionne plus pour récupérer les users dans le user  contrôleur utilisateur.",
+			});
+		} else {
+			response.status(200).json({
+				result,
+			});
+		}
+		//console.log(result); // pour voir tout les users
+	});
+};
 
-// adding youser start  here
+// adding user or sigup start  here
 
 exports.newUser = (request, response) => {
 	const { first_name, last_name, email, role, password } = request.body;
 
-	if (role.length === 0) {
+	if (role.length === 0 ) {
 		response.status(400).json({
 			message: "les champs ne peut pas être vide!",
 		});
@@ -121,6 +137,7 @@ exports.findUser = (request, response) => {
 						first_name: result[0].first_name,
 						last_name: result[0].last_name,
 						email: result[0].email,
+						role: result[0].role,
 						password: result[0].password,
 					};
 
@@ -144,7 +161,4 @@ exports.findUser = (request, response) => {
 		}
 	});
 };
-// exports.logout = (request, response) => {
-// 	response.clearCookie("authcookie");
-// 	response.redirect("/");
-// };
+
