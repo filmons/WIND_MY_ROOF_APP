@@ -99,7 +99,7 @@ exports.newUser = (request, response) => {
 
 /// here start login 
 exports.findUser = (request, response) => {
-	const userdata = ({ email, password } = request.body);
+	const userdata = ({email,password } = request.body);
 	userModel.chikingUserData(userdata, (error, result) => {
 		if (result.length === 0) {
 			response.status(401).json({
@@ -147,14 +147,13 @@ exports.findUser = (request, response) => {
 						token: token,
 						user: {
 							id: request.user.id,
-							city: request.user.city,
 							first_name: request.user.first_name,
 							last_name: request.user.last_name,
 							role: request.user.role,
 							email: request.user.email,
 						},
 					});
-					console.log("new infrmation", request.user.username);
+					//console.log("new infrmation");
 					return request.user;
 				});
 			});
@@ -162,3 +161,19 @@ exports.findUser = (request, response) => {
 	});
 };
 
+// exports.findByRole = (request, response) => {
+// 	// const {role} = request.params;
+// 	userModel.chikingUserDataRole(  ( error,result) => {
+// 		if (error) {
+// 			response.status(500).json({
+// 				message:
+// 					"Le serveur ne fonctionne plus pour récupérer les users dans le user  contrôleur utilisateur.",
+// 			});
+// 		} else {
+// 			response.status(200).json({
+// 				result,
+// 			});
+// 		}
+// 		//console.log(result); // pour voir tout les users
+// 	});
+// };

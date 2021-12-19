@@ -12,17 +12,6 @@ exports.getAllUsers = (callback) => {
 	});
 };
 
-exports.getOneUser = (id, callback) => {
-	//console.log(getOneUser) // db.execute
-	db.execute(`SELECT * FROM users WHERE id = ${id};`, (error, result) => {
-		if (error) {
-			console.log("error:", error);
-			callback(error, null);
-			return;
-		}
-		callback(null, result);
-	});
-};
 
 
 exports.AddUser = (newUser, callback) => {
@@ -70,3 +59,30 @@ exports.chikingUserData = (userdata, Callback) => {
 		}
 	);
 };
+
+exports.getOneUser = (id, callback) => {
+	//console.log(getOneUser) // db.execute
+	db.execute(`SELECT * FROM users WHERE id = ${id};`, (error, result) => {
+		if (error) {
+			console.log("error:", error);
+			callback(error, null);
+			return;
+		}
+		callback(null, result);
+	});
+};
+
+// exports.chikingUserDataRole = (roles, Callback) => {
+// 	db.query(
+// 		`SELECT * FROM users where role = ${roles.role};`,
+// 		(error, result) => {
+// 			if (error) {
+// 				console.log("error:", error);
+// 				Callback(error, null);
+// 			}
+// 			//console.log(result)
+// 			Callback(null, result);
+// 		}
+// 	);
+// };
+

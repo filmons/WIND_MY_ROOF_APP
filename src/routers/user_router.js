@@ -4,12 +4,14 @@ const userRouter = express.Router();
 
 
 
-const ContrlUser = require("../controllers/user_controller");
+const UserController = require("../controllers/user_controller");
 
-userRouter.get("/users", ContrlUser.findAllUsers);
-userRouter.get("/user/:id",ContrlUser.OneUsers);
+userRouter.get("/users", UserController.findAllUsers);
+userRouter.get("/user/:id",UserController.OneUsers);
+// userRouter.get("/user/:role",UserController.findByRole);
 
-userRouter.post("/signup",ContrlUser.newUser);
-userRouter.post("/login",ContrlUser.findUser);
+userRouter.post("/signup",UserController.newUser);
+
+userRouter.post("/login",UserController.findUser);
 
 module.exports = userRouter;
