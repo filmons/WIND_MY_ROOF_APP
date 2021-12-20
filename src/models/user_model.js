@@ -1,7 +1,6 @@
 const db = require("../db/db");
 
 exports.getAllUsers = (callback) => {
-	//console.log(getAllUserName) // db.execute
 	db.execute(`SELECT * FROM users ;`, (error, result) => {
 		if (error) {
 			console.log("error:", error);

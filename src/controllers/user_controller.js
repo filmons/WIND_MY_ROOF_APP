@@ -160,20 +160,3 @@ exports.findUser = (request, response) => {
 		}
 	});
 };
-
-// exports.findByRole = (request, response) => {
-// 	// const {role} = request.params;
-// 	userModel.chikingUserDataRole(  ( error,result) => {
-// 		if (error) {
-// 			response.status(500).json({
-// 				message:
-// 					"Le serveur ne fonctionne plus pour récupérer les users dans le user  contrôleur utilisateur.",
-// 			});
-// 		} else {
-// 			response.status(200).json({
-// 				result,
-// 			});
-// 		}
-// 		//console.log(result); // pour voir tout les users
-// 	});
-// };
