@@ -61,6 +61,7 @@ exports.newUser = (request, response) => {
 				});
 			} else {
 				const saltRounds = 10;
+				
 				bcrypt.hash(password, saltRounds, (error, hash) => {
 					if (error) {
 						response.status(500).json({
@@ -153,7 +154,8 @@ exports.findUser = (request, response) => {
 							email: request.user.email,
 						},
 					});
-					//console.log("new infrmation");
+					
+					console.log("new infrmation", request.user.username);
 					return request.user;
 				});
 			});
